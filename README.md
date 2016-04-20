@@ -4,7 +4,7 @@ Custom form control that allows you to select users only from a specific group
 **How to use the addon**
 
 In the sample configuration bellow, it's possible to see how to configure an assotiation to show only users from a specific group.
-The sample attribute is bpm:assignee, configured to search for users only inside the ALFRESCO_ADMINISTRATORS group._
+The sample attribute is bpm:assignee, configured to search for users only inside the ALFRESCO_ADMINISTRATORS group.
 
     <config evaluator="string-compare" condition="activiti$activitiAdhoc">
         <forms>
