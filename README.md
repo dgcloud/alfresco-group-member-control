@@ -1,6 +1,8 @@
 # alfresco-group-member-control
 Custom form control that allows you to select users only from a specific group
 
+The inspiration for this custom form control came from this post https://www.appnovation.com/blog/form-control-members-group
+
 **How to use the addon**
 
 In the sample configuration bellow, it's possible to see how to configure an assotiation to show only users from a specific group.
