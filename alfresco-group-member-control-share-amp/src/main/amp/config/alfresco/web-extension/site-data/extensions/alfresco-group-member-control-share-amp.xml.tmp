@@ -1,0 +1,14 @@
+<extension>
+    <modules>
+        <module>
+            <id>Custom group member form control dependencies</id>
+            <auto-deploy>true</auto-deploy>
+            <customizations>
+                <customization>
+                    <targetPackageRoot>org.alfresco.components.form</targetPackageRoot>
+                    <sourcePackageRoot>org.orderofthebee.components.form</sourcePackageRoot>
+                </customization>
+            </customizations>
+        </module>
+    </modules>
+</extension>
