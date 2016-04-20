@@ -89,7 +89,11 @@ function findUsers(groupName, searchTerm, maxResults, results)
 {
     var group = people.getGroup(groupName);
 
-    var personRefs = people.getMembers(group, false);
+    // if group does not exist, does nothing
+    if (!group)
+        return;
+
+    var personRefs = people.getMembers(group, true);
    
     // create person object for each result
     for each(var personRef in personRefs)
@@ -103,10 +107,11 @@ function findUsers(groupName, searchTerm, maxResults, results)
         var middleName = (personRef.properties.middleName != null) ? personRef.properties.middleName : "";
 
         // includes only users containing the searchTerms in the userName, firstName, lastName or middleName
-        if (daname.indexOf(searchTerm) > -1 ||
-            firstName.indexOf(searchTerm) > -1 ||
-            lastName.indexOf(searchTerm) > -1 ||
-            middleName.indexOf(searchTerm) > -1) {
+        // all comparisons done using lower case
+        if (daname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            lastName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+            middleName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
 
             //filter out the disabled users
             if(people.isAccountEnabled(daname)){
