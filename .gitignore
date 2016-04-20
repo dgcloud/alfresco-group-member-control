@@ -1,2 +1,4 @@
 /.idea/
 /alf_data_dev/
+*.iml
+*.log
