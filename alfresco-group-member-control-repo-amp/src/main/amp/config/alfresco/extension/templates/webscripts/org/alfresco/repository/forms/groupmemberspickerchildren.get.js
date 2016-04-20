@@ -108,7 +108,10 @@ function findUsers(groupName, searchTerm, maxResults, results)
 
         // includes only users containing the searchTerms in the userName, firstName, lastName or middleName
         // all comparisons done using lower case
-        if (daname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
+
+        // if search term is empty, returns all users
+        if ((searchTerm == undefined || searchTerm.length == 0) ||
+            daname.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
             firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
             lastName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 ||
             middleName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {

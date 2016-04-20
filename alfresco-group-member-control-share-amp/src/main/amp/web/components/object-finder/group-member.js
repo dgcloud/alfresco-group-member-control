@@ -239,6 +239,10 @@ if (typeof OOTB == undefined || !OOTB)
 
         this.options.objectRenderer = new OOTB.ObjectRenderer(this);
 
+        // allows the user to click search without typing the search term
+        // the picker webscript will list all group's members when the search term is empty
+        this.options.minSearchTermLength = 0;
+
         // Re-register with our own name
         this.name = "OOTB.GroupMemberObjectFinder";
         Alfresco.util.ComponentManager.reregister(this);
@@ -247,12 +251,15 @@ if (typeof OOTB == undefined || !OOTB)
     };
 
     YAHOO.extend(OOTB.GroupMemberObjectFinder, Alfresco.ObjectFinder, {
-        /*_inAuthorityMode : function ObjectFinder__inAuthorityMode() {
-            if (this.options.itemFamily == "authority" || this.options.searchMode == "true") {
-                return true;
-            } else {
-                return false;
-            }
-        }*/
+        onSearch: function GroupMemberObjectFinder_onSearch()
+        {
+            var searchTerm = YAHOO.lang.trim(Dom.get(this.pickerId + "-searchText").value);
+            // execute search
+            YAHOO.Bubbling.fire("refreshItemList",
+            {
+                eventGroup: this,
+                searchTerm: searchTerm
+            });
+        }
     });
 })();
