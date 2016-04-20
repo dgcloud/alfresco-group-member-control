@@ -23,11 +23,11 @@
       </#if>
    </#if>
 
-    <#if cloud>
-     var ${picker} = new Alfresco.CloudObjectFinder("${controlId}", "${fieldHtmlId}").setOptions(
-    <#else>
-     var ${picker} = new Alfresco.ObjectFinder("${controlId}", "${fieldHtmlId}").setOptions(
-    </#if>
+   <#if cloud>
+      var ${picker} = new Alfresco.CloudObjectFinder("${controlId}", "${fieldHtmlId}").setOptions(
+   <#else>
+      var ${picker} = new OOTB.GroupMemberObjectFinder("${controlId}", "${fieldHtmlId}").setOptions(
+   </#if>
    {
       <#if form.mode == "view" || (field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true"))>disabled: true,</#if>
       field: "${field.name}",
@@ -42,11 +42,6 @@
       startLocation: "${field.control.params.startLocation}",
       <#if form.mode == "edit" && args.itemId??>currentItem: "${args.itemId?js_string}",</#if>
       <#if form.mode == "create" && form.destination?? && form.destination?length &gt; 0>currentItem: "${form.destination?js_string}",</#if>
-   </#if>
-   <#if field.control.params.deepSearch??>
-        deepSearch: ${field.control.params.deepSearch},
-   <#else>
-        deepSearch: false,
    </#if>
    <#if field.control.params.startLocationParams??>
       startLocationParams: "${field.control.params.startLocationParams?js_string}",

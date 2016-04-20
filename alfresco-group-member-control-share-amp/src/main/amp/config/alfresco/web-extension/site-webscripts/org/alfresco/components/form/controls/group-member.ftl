@@ -1,4 +1,4 @@
-<#include "common/picker.inc.ftl" />
+<#include "common/group-member-picker.inc.ftl" />
 
 <#assign controlId = fieldHtmlId + "-cntrl">
 
